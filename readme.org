@@ -1,0 +1,24 @@
+#+title: readme
+
+* Drawing on screen
+This is a series of different example to draw something on screen,
+from simple to hardcore.
+
+* Library
+The base library is SDL2  (maybe SDL3 once it is released), I don't
+want to handle the cross platform staffs myself.
+
+We will start by using the built-in SDL functions to render some
+rectangles. Slowly proceed to using OpenGL and Vulkan. Meanwhile, we
+may explore something on the web, touch a bit of WebGPU.
+
+* Language
+The language of choice would be C++, although I like C very much, for
+a learning purpose, C++ is a much better choice.
+
+Later, we may do something interesting in Rust and Zig.
+
+* Games
+We are going to build some games to place something on screen.
+
+The order would be in the [[gamelist.org][game list]].

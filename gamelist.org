@@ -1,0 +1,7 @@
+#+title: gamelist
+
+* Snake
+Snake is probably a widely understood game.
+
+* Game of life
+The conway's game of life is fun for us to deal with a lot of objects.
