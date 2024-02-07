@@ -3,6 +3,8 @@
 #include "helpers.hh"
 #include "renderer.hh"
 
+#include <vector>
+
 void App::run() {
     init();
     main_loop();

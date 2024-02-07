@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 #include <time.h>
+#include <vector>
 
 void Game::init() {
     // make snake_head at the middle of the screen, facing up

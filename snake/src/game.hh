@@ -2,6 +2,7 @@
 #define GAME_HH
 
 #include <deque>
+#include <stdint.h>
 
 enum SnakeDirection {
     DIRECTION_UP,
