@@ -1,12 +1,15 @@
 include config.mk
 
 SRC = main.cc helpers.cc app.cc game.cc
-OBJ = $(SRC:.cc=.o) glad.o renderer.o
+OBJ = $(SRC:.cc=.o)
 
-all: sample
+all: sdl_renderer
 
-sample: $(OBJ)
-	$(CXX) -o $@ $(OBJ) $(LDFLAGS)
+sdl_renderer: $(OBJ) renderer_sdl.o
+	$(CXX) -o sample $(OBJ) renderer_sdl.o $(LDFLAGS)
+
+webgpu: $(OBJ) renderer_wgpu.o
+	$(CXX) $(CXXFLAGS) -o sample $(OBJ) renderer_wgpu.o $(LDFLAGS) ../lib/libwgpu_native.a
 
 main.o: config.hh
 
@@ -18,10 +21,11 @@ app.o: app.hh config.hh
 
 game.o: game.hh
 
-renderer.o: renderer.hh renderer_sdl.cc
-	$(CXX) -o $@ $(CXXFLAGS) -c renderer_sdl.cc
+renderer_sdl.o: renderer.hh renderer_sdl.hh
+
+renderer_wgpu.o: renderer.hh renderer_wgpu.hh
 
 clean:
-	rm -f sample $(OBJ)
+	rm -f sample $(OBJ) renderer*.o
 
 .PHONY: all clean

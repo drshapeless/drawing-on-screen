@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// error_log will exit the program
 void error_log(const char *msg, ...) {
     fputs("[ERROR] ", stderr);
     va_list argptr;
