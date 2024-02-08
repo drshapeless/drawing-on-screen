@@ -2,7 +2,7 @@
 #include "helpers.hh"
 
 void RendererSDL::init(SDL_Window *window) {
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer(window, NULL, SDL_RENDERER_ACCELERATED);
     if (renderer == nullptr) {
         error_log(SDL_GetError());
     }
@@ -28,11 +28,6 @@ void RendererSDL::draw_rects(const Rect *rects, int count) {
     if (SDL_RenderFillRects(renderer, rects, count) != 0) {
         error_log(SDL_GetError());
     }
-
-    set_color(0, 0, 0, 255);
-    if (SDL_RenderDrawRects(renderer, rects, count) != 0) {
-        error_log(SDL_GetError());
-    }
 }
 
 void RendererSDL::clear() {
@@ -42,5 +37,7 @@ void RendererSDL::clear() {
 }
 
 void RendererSDL::present() {
-    SDL_RenderPresent(renderer);
+    if (SDL_RenderPresent(renderer) != 0) {
+        error_log(SDL_GetError());
+    }
 }

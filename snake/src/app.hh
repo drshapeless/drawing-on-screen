@@ -1,7 +1,7 @@
 #ifndef APP_HH
 #define APP_HH
 
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
 
 #include "renderer.hh"
 #include "game.hh"

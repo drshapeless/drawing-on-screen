@@ -1,10 +1,12 @@
+export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig
+
 # compiler
 CC = clang
 CXX = clang++
 
 # includes and libs
-INCS = $(shell pkg-config --cflags sdl2) -I../include
-LIBS = $(shell pkg-config --libs sdl2)
+INCS = $(shell pkg-config --cflags sdl3) -I../include
+LIBS = $(shell pkg-config --libs sdl3)
 
 # flags
 CFLAGS = $(INCS) -O2 -std=c99

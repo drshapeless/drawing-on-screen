@@ -15,10 +15,8 @@ void App::init() {
         error_log(SDL_GetError());
     }
 
-    window = SDL_CreateWindow(WINDOW_TITLE, SDL_WINDOWPOS_CENTERED,
-                              SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH,
-                              SCREEN_HEIGHT,
-                              SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+    window = SDL_CreateWindow(WINDOW_TITLE, SCREEN_WIDTH, SCREEN_HEIGHT,
+                              SDL_WINDOW_RESIZABLE);
     if (window == nullptr) {
         error_log(SDL_GetError());
     }
@@ -35,6 +33,11 @@ Rect snake_to_rect(uint32_t pos) {
     rect.x = pos % GRID_WIDTH * rect.w;
     rect.y = pos / GRID_WIDTH * rect.h;
 
+    rect.w -= 2;
+    rect.h -= 2;
+    rect.x += 1;
+    rect.y += 1;
+
     return rect;
 }
 
@@ -46,10 +49,10 @@ void App::main_loop() {
         SDL_Event e;
         while (SDL_PollEvent(&e)) {
             switch (e.type) {
-            case SDL_QUIT:
+            case SDL_EVENT_QUIT:
                 running = false;
                 break;
-            case SDL_KEYDOWN:
+            case SDL_EVENT_KEY_DOWN:
                 switch (e.key.keysym.sym) {
                 case SDLK_w:
                     if (!changed) {

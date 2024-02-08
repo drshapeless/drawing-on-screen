@@ -1,9 +1,9 @@
 #ifndef RENDERER_SDL_HH
 #define RENDERER_SDL_HH
 
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
 
-typedef SDL_Rect Rect;
+typedef SDL_FRect Rect;
 
 struct RendererSDL {
     void init(SDL_Window *window);
